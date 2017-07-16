@@ -11,23 +11,12 @@ $(function(){
 		setupPlayer(fileName);
 	});*/
 	
-	$('#nextLink').on('click',function(){
-		var href = $(this).attr('href');
-		if(href == '')
-		alert("Movie with this language is not available.");
-	});
+	// $('.current_action').on('click',function(){
+	// 	alert("dddd");
+	// 	 var value=$('.current_file').val();
+	// 	 console.log(value);
+	// });
 	
 });
 
-/*function setupPlayer(fileName){
-	player.setup({
-		file: fileName,
-		width: 800,
-		height: 500,
-		autostart: true
-	  });
-}*/
 
-$(document).ready(function(){
-	//player = jwplayer('player')
-});

@@ -1,19 +1,25 @@
-(function() {
-  'use strict';
+ 'use strict';
+  
+  var state = {},
+     adServerUrl = "assets/uploads/advs/inventory.json",
+      midrollPoint = 5,
+      playMidroll = true,
+      flag = true;
+     
   var pad = function(n, x, c) {
     return (new Array(n).join(c || '0') + x).slice(-n);
   };
   var padRight = function(n, x, c) {
     return (x + (new Array(n).join(c || '0'))).slice(0, n);
   };
-
-  var player = videojs('examplePlayer', {}, function(){
-    // initalize example ads integration for this player
-    var player = this;
-    player.exampleAds({
-      debug: true
-    });
-
+ 
+ //console.log(adServerUrl+'ddddd');  
+var player = videojs('examplePlayer', {}, function(){
+	 player.ads();
+	
+	exampleAds({
+		  debug: true
+	}) 
     var log = document.querySelector('.log');
     var Html5 = videojs.getTech('Html5');
     Html5.Events.concat(Html5.Events.map(function(evt) {
@@ -88,17 +94,80 @@
     });
   });
 
-  /*document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    player.src(document.querySelector('input[type="url"]').value);
-  });*/
-  
-  $('.nextVideo').on('click',function(){
-		var fileName = $(this).find('strong').text();
+$('.nextVideo').on('click',function(){
+	    midrollPoint = 5;
+	    var fileName = $(this).find('strong').text();
 		fileName += ".mp4";
 		player.src(fileName);
-		
+	    videojs.log("play video "+fileName)
+	    player.trigger('adsready');
+	    player.play() 
 	});
-  
-  
-})();
+
+function exampleAds(options){
+	
+	videojs.log("in example ads "+JSON.stringify(options));
+	var check = true
+    player.on('contentupdate', requestAds);
+    if (player.currentSrc()) {
+      requestAds();
+    }
+    player.on('readyforpreroll', function() {
+		        
+	});
+	 
+	 
+}
+
+player.on('timeupdate', function(event) {
+      var currentTime = player.currentTime(), opportunity;
+      opportunity = currentTime > midrollPoint 
+      if (opportunity && playMidroll) {
+		midrollPoint = midrollPoint + 5  
+        state.midrollPlayed = true;
+        videojs.log("play mid roll add"+midrollPoint);
+        playAd();
+      }
+
+    });
+
+function playAd(){
+	    videojs.log("play ad ");
+	    player.ads.startLinearAdMode();
+        // tell videojs to load the ad
+        var media = state.inventory[Math.floor(Math.random() * state.inventory.length)];
+        player.src(media);
+        player.one('adended', function() {
+         	  videojs.log("ad ended ");
+			  player.ads.endLinearAdMode();
+			  //state.midrollPlayed = false;
+		});
+
+}
+
+function requestAds() {
+        if(flag){
+        // reset plugin state
+        state = {};
+        flag = false;
+        // fetch ad inventory
+        // the 'src' parameter is ignored by the example inventory.json flat file,
+        // but this shows how you might send player information along to the ad server.
+        videojs.log("loads ads >>>>> ")
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", adServerUrl + "?src=" + encodeURIComponent(player.currentSrc()));
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            try {
+			  videojs.log("testing >>>> "+xhr.responseText)	
+			  state.inventory = JSON.parse(xhr.responseText);
+              
+            } catch (err) {
+              throw new Error('Couldn\'t parse inventory response as JSON');
+            }
+          }
+        };
+        xhr.send(null);
+	}
+
+}

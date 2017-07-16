@@ -19,9 +19,12 @@ define("ABSPATH",implode("/",$abspath));
 $path = "http://".$_SERVER['SERVER_NAME']."/".APP_FOLDER; 
 define("APP_PATH",$path);
 $upload_floder_path=FILE_PATH."assets/uploads/";
+$upload_folder_sitepath=APP_PATH."assets/uploads/";
+define("UPLOAD_SITE_PATH",$upload_folder_sitepath);
 define("UPLOAD_PATH",$upload_floder_path);
 //echo "PATH~~".UPLOAD_PATH;
 //define("SITE",$path."asset/");
 define("IMG_PATH",$path."admin/images/");
 //include_once(FILE_PATH.'common/function.php');
+
 ?>
