@@ -35,12 +35,12 @@
         <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading text-center"> <strong class="">Admin control panel</strong>
-
                 </div>
                 <div class="panel-body">
                     <div class="form-horizontal">
                     
             <form id="uploadfileform" method="post" enctype="multipart/form-data" onsubmit="return submitForm();">
+            <div class="text-right"><a class="btn btn-info btn-sm" href="<?php echo ADMIN_FOLDER_PATH ?>/video-list.php">Manage All Videos</a></div>
             <div class="messages"></div>
             
             <div class="form-group">

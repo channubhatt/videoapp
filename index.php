@@ -2,7 +2,7 @@
   <form name="language_selection" method="post" action="">
   <input type="hidden" name="MethodName" value="FormPost">
   <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading text-center"> <strong class="">Select language for movie</strong>
                 </div>

@@ -9,7 +9,9 @@
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/video-custom.css">
+
 <link rel="stylesheet" href="assets/css/mystyle.css">
 
 <link rel="stylesheet" href="assets/css/video-js.css">

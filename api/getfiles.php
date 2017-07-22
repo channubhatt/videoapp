@@ -10,7 +10,7 @@ if (is_dir($dir)){
     	$data=pathinfo($file, PATHINFO_EXTENSION);
     	if("mp4"==$data)
     	{
-    	$posts[]=array("FilePath"=>$site_folder.$file, "FileName"=>$file );
+    	$posts[]=array("FilePath"=>$site_folder.$file, "FileName"=>$file, "DirPath" => $dir);
     	}
       //echo "filename:" . $file . "<br>";
     }

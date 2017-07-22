@@ -1,13 +1,1 @@
-[
-  {
-    "src": "assets/uploads/advs/kitteh.mp4",
-    "type": "video/mp4"
-  },{
-    "src": "assets/uploads/advs/superclip.mp4",
-    "type": "video/mp4"
-  }
-  ,{
-    "src": "assets/uploads/advs/small.mp4",
-    "type": "video/mp4"
-  }
-]
+[{"src":"assets\/uploads\/advs\/kitteh.mp4","type":"video\/mp4"},{"src":"assets\/uploads\/advs\/superclip.mp4","type":"video\/mp4"}]
