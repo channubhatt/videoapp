@@ -18,7 +18,11 @@ if ((($_FILES["file"]["type"] == "video/mp4") && ($_FILES["file"]["size"] < $vid
 	        echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
 	    } 
 	    else {
-	        $filename = $_FILES["file"]["name"];
+	        //$filename = $_FILES["file"]["name"];
+	        $filename = trim(str_replace(" ","-", $_FILES['file']['name']));
+	        
+	       //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+   			
 	        // echo "Upload: " . $_FILES["file"]["name"] . "<br>";
 	        // echo "Type: " . $_FILES["file"]["type"] . "<br>";
 	        // echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
@@ -32,6 +36,7 @@ if ((($_FILES["file"]["type"] == "video/mp4") && ($_FILES["file"]["size"] < $vid
 		$response['message'] = '<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong>Warning!</strong> &nbsp;'. $filename . ' already exists.</div>';
 	        } 
 	        else {
+
 	            move_uploaded_file($_FILES["file"]["tmp_name"], UPLOAD_PATH.$video_folder_location."/" . $filename);
 
 	            if($video_folder_location=="advs")

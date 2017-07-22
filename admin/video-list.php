@@ -97,12 +97,13 @@
    // var today=$("#currrent_date").val();
     
  	var url='../api/getfiles.php?type=1&val=1';
+
     $(".program-list-content").empty();
     $.getJSON(url, function(result){    
         $.each(result, function(i, field){
           var filefullpath=field.DirPath+'/'+field.FileName;
           var row=i+1+'.';
-          var option_name = ('<tr class="videolist_row"><td>'+row+'</td><td width="60%"><i class="fa fa-file-video-o" aria-hidden="true"></i>&nbsp; '+field.FileName+'&nbsp;</td><td width="40%"><a class="btn btn-danger btn-sm" onclick="delete_video(event, this, current_id)" href='+filefullpath+'><i class="fa fa-times-circle-o" aria-hidden="true"></i> Delete</a></td></tr>');
+          var option_name = ('<tr class="videolist_row"><td>'+row+'</td><td width="60%"><i class="fa fa-file-video-o" aria-hidden="true"></i>&nbsp; '+field.FileName+'&nbsp;</td><td width="40%"><a class="btn btn-danger btn-sm" onclick="delete_video(event, this, tab_11)" href='+filefullpath+'><i class="fa fa-times-circle-o" aria-hidden="true"></i> Delete</a></td></tr>');
             $(".program-list-content").append(option_name);
             //console.log(option_name);
         });
