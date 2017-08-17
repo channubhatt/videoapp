@@ -1,0 +1,3 @@
+<?php
+$interval=10;
+?>

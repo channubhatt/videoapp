@@ -1,10 +1,14 @@
+ //alert(interval_value);
+ //console.log(interval_value);
  'use strict';
-  
+  var intervalvalue=document.getElementById('interval_value').value;
+  var playAdInEvery = intervalvalue;
+  var test = 0;
   var state = {},
      adServerUrl = "assets/uploads/advs/inventory.json",
-      midrollPoint = 5,
+      midrollPoint = playAdInEvery,
       playMidroll = true,
-      flag = true;
+	  opportunity = false;
      
   var pad = function(n, x, c) {
     return (new Array(n).join(c || '0') + x).slice(-n);
@@ -17,9 +21,9 @@
 var player = videojs('examplePlayer', {}, function(){
 	 player.ads();
 	
-	exampleAds({
-		  debug: true
-	}) 
+	//request for ads list
+	requestAds();
+
     var log = document.querySelector('.log');
     var Html5 = videojs.getTech('Html5');
     Html5.Events.concat(Html5.Events.map(function(evt) {
@@ -93,63 +97,71 @@ var player = videojs('examplePlayer', {}, function(){
       });
     });
   });
+  
+$('body').on('click','.current_action',function(){
+	     midrollPoint = playAdInEvery;
+		 if(state.midrollPlayed){
+			player.currentTime(0);
+		 }
+		 playMidroll = true;
+		 videojs.log("midRoll var initialized @@@@@@@ "+midrollPoint);
+		 var url=$(this).find('input').val();
+		 $("#video_data, #examplePlayer_html5_api").attr('src', url);
+		 //player.trigger('adsready');
+	     player.play();
+});
 
-$('.nextVideo').on('click',function(){
-	    midrollPoint = 5;
-	    var fileName = $(this).find('strong').text();
-		fileName += ".mp4";
-		player.src(fileName);
-	    videojs.log("play video "+fileName)
-	    player.trigger('adsready');
-	    player.play() 
-	});
 
 function exampleAds(options){
-	
-	videojs.log("in example ads "+JSON.stringify(options));
-	var check = true
-    player.on('contentupdate', requestAds);
+	requestAds();
+    /*player.on('contentupdate', requestAds);
     if (player.currentSrc()) {
       requestAds();
-    }
+    }*/
     player.on('readyforpreroll', function() {
 		        
 	});
-	 
-	 
 }
 
+player.on('seeking', function(event) {
+	//var currentTime = player.currentTime();
+	//videojs.log("seeking >>><<<<< "+currentTime);
+	//var time = parseInt(currentTime);
+	//var updatedMidroll = parseInt(time / playAdInEvery);
+	//updatedMidroll %= 10;
+	//videojs.log("seeking11 >>><<<<< add : "+updatedMidroll+" CT -: "+time);
+	
+});
+
+
+
 player.on('timeupdate', function(event) {
-      var currentTime = player.currentTime(), opportunity;
-      opportunity = currentTime > midrollPoint 
+      var currentTime = parseInt(player.currentTime());
+	  opportunity = currentTime > midrollPoint 
       if (opportunity && playMidroll) {
-		midrollPoint = midrollPoint + 5  
+		videojs.log("currentTime >>><<<<< "+currentTime);  
+		videojs.log("play mid roll >>><<<<< "+midrollPoint);   
+		midrollPoint = midrollPoint + playAdInEvery  
         state.midrollPlayed = true;
-        videojs.log("play mid roll add"+midrollPoint);
         playAd();
       }
-
     });
 
 function playAd(){
-	    videojs.log("play ad ");
 	    player.ads.startLinearAdMode();
         // tell videojs to load the ad
         var media = state.inventory[Math.floor(Math.random() * state.inventory.length)];
         player.src(media);
-        player.one('adended', function() {
-         	  videojs.log("ad ended ");
-			  player.ads.endLinearAdMode();
-			  //state.midrollPlayed = false;
-		});
-
 }
 
+player.on('adended', function() {
+			  player.ads.endLinearAdMode();
+			  state.midrollPlayed = false;
+		});
+
 function requestAds() {
-        if(flag){
         // reset plugin state
         state = {};
-        flag = false;
         // fetch ad inventory
         // the 'src' parameter is ignored by the example inventory.json flat file,
         // but this shows how you might send player information along to the ad server.
@@ -168,6 +180,4 @@ function requestAds() {
           }
         };
         xhr.send(null);
-	}
-
 }

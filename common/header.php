@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hindi Movies</title>
+<title>Unicremind</title>
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -31,8 +31,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="../home.html">Unicremind</a>
+      <a class="navbar-brand" href="<?php echo APP_PATH ?>">Unicremind</a>
     </div>
+    <input type="hidden" id="interval_value" name="interval_value" value="<?php echo VIDEO_INTERVAL; ?>">
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="#">About Us</a></li>

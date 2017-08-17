@@ -9,6 +9,8 @@ define(APP_FOLDER,"videosapp/");
 define("FILE_PATH",$_SERVER['DOCUMENT_ROOT']."/".APP_FOLDER);
 //echo "</br>FILE_PATH~~".FILE_PATH."</br>";
 define("ROOT_DIR",dirname(__FILE__)."");
+include_once('setinterval.php');
+//echo $interval;
 //echo "</br>ROOT_DIR~~ ".ROOT_DIR."</br>";
 $ROOT_DIR = str_replace('\\', '/', ROOT_DIR);
 //echo "</br>new path_DIR~~ ".$npath."</br>";
@@ -18,6 +20,7 @@ define("ABSPATH",implode("/",$abspath));
 //echo "</br>ABSPATH~~".ABSPATH."</br>";
 $path = "http://".$_SERVER['SERVER_NAME']."/".APP_FOLDER; 
 define("APP_PATH",$path);
+
 $upload_floder_path=FILE_PATH."assets/uploads/";
 $upload_folder_sitepath=APP_PATH."assets/uploads/";
 $api_folder_sitepath=APP_PATH."api/";
@@ -29,6 +32,7 @@ define("UPLOAD_PATH",$upload_floder_path);
 //echo "PATH~~".UPLOAD_PATH;
 //define("SITE",$path."asset/");
 define("IMG_PATH",$path."admin/images/");
+define('VIDEO_INTERVAL',$interval); 
 //include_once(FILE_PATH.'common/function.php');
 
 ?>

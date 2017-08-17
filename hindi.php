@@ -15,8 +15,6 @@
 </div>
 </div>
 </div>
-
-
 <!-- END navigator -->
 <script src="assets/js/video.js"></script>
 <script src="assets/js/videojs.ads.js"></script>
