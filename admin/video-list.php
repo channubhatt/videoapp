@@ -36,7 +36,10 @@
 <div class="row">&nbsp;</div>
 
  <div class="panel panel-default">
-      <div class="panel-heading"><h4>Manage Video Playlist</h4><a href="<?php echo ADMIN_FOLDER_PATH ?>" class="btn btn-info btn-sm" role="button">Add More Video</a></div>
+      <div class="panel-heading"><h4>Manage Video Playlist</h4><a href="<?php echo ADMIN_FOLDER_PATH ?>" class="btn btn-info btn-sm" role="button">Add More Video</a>
+         <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Set Video Interval</button>
+      </div>
       <div class="panel-body">
       <ul class="nav nav-pills" id="myProgramlistTabs">
 <li class="list-video">
@@ -67,6 +70,43 @@
   </table>
       </div>
     </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Set Interval</h4>
+        </div>
+        <form id="uploadfileform" method="post" onsubmit="return submitFormTxtFile();">
+        <div class="modal-body">
+        <div class="messages"></div>
+           <div class="form-group">
+                <label for="uploadFile" class="control-label">Interval Value<span class="required">*</span></label>                
+                  <input name="video_interval" id="video_interval" type="number" value="<?php echo VIDEO_INTERVAL; ?>" class="form-control input-sm" min="5" required/>
+              </div>
+        </div>
+        <div class="modal-footer">
+
+        <div id="loadingDiv2" style="display:none;">                 
+                  <img src="<?php echo APP_PATH ?>assets/images/ajax-loader.gif"/>
+                </div>
+                  <input type="submit" id="uploadbtn" value="Update Now" class="btn btn-success btn-outline-rounded green">
+                
+             
+                             
+                
+              
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+
 </div>
  </div>
  </div> 	
@@ -149,7 +189,32 @@ function delete_video(e, item, current_id) {
 		} 
 }
 
+function submitFormTxtFile() {
+            //console.log("submit event");
+            var fd = new FormData(document.getElementById("uploadfileform"));
+            //fd.append("label", "WEBUPLOAD");
+            $("#loadingDiv2").css('display', '');
+            $.ajax({
+              url: "intervel-file-handler.php",
+              type: "POST",
+              data: fd,
+              processData: false,  // tell jQuery not to process the data
+              contentType: false   // tell jQuery not to set contentType
+            }).done(function( data ) {
 
+                $("#loadingDiv2").css('display', 'none');
+                    var messageAlert = 'alert-' + data.type;
+                    var messageText = data.message;
+                    if (messageAlert && messageText) {
+                        $('#uploadfileform').find('.messages').html(messageText);
+                        //$('#uploadfileform')[0].reset();
+                        
+                    }
+                //console.log("PHP Output:");
+                //console.log( data );
+            });
+            return false;
+        }
 </script>
 
 </body>

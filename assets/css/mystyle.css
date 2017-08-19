@@ -87,3 +87,17 @@ div#preloader { position: fixed; left: 0; top: 0; z-index: 999; width: 100%; hei
     border: 1px solid #ddd;
     padding: 10px;
 }
+
+#loadingDiv2 img{
+        position: relative;
+    float: left;
+    margin-left: 400px;
+    width: 20px;
+    margin-top: 5px;
+   }
+
+   .success_interval{
+   	    font-size: 12px;
+    color: green;
+    margin-bottom: 5px;
+   }

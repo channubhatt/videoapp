@@ -2,16 +2,16 @@
 <!-- tab panes -->
 <div class="row">
 <div class="col-md-9">
-	<video id="examplePlayer" class="video-js vjs-default-skin"
-		width="1200" height="600" controls autoplay>
-		<source id="video_data" type='video/mp4' src=""/>					
+  <video id="examplePlayer" class="video-js vjs-default-skin"
+    width="1200" height="600" controls autoplay>
+    <source id="video_data" type='video/mp4' src=""/>         
 </video>
 </div>
 <div class="col-md-3">
-<div id="prod_nav">	
-<h4>PlayList</h4>		
-	<ul class="item list-unstyled">
-	</ul>
+<div id="prod_nav"> 
+<h4>PlayList</h4>   
+  <ul class="item list-unstyled">
+  </ul>
 </div>
 </div>
 </div>
