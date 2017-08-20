@@ -98,6 +98,24 @@
     if (player.currentSrc()) {
       requestAds();
     }
+	
+	player.on('seeking', function(event) {
+		var currentTime = player.currentTime();
+		//videojs.log("seeking >>><<<<< "+currentTime);
+		var time = parseInt(currentTime);
+		var modVal = parseInt(time % 5);
+		var diff = parseInt(time - modVal);
+		midrollPoint = diff + 5
+		videojs.log("seeking11 >>><<<<< add : "+midrollPoint+" CT -: "+time);
+		
+	
+	});
+	
+	player.on('ended', function (e) {
+    // do something
+	   videojs.log("video finished");
+	   midrollPoint = 5;
+	});
 
     player.on('contentended', function() {
       if (!state.postrollPlayed && player.ads.state === 'postroll?' && playPostroll) {
@@ -120,13 +138,15 @@
       /*if (state.midrollPlayed) {
         return;
       }*/
+	  
       var currentTime = player.currentTime();
-      var opportunity;
+      
+	  var opportunity;
       if ('lastTime' in state) {
         opportunity = currentTime > midrollPoint && state.lastTime < midrollPoint;
       }
       state.lastTime = currentTime;
-      if (opportunity && playMidroll) {
+	  if (opportunity && playMidroll) {
         //state.midrollPlayed = true;
         playAd(); 
         midrollPoint = midrollPoint + 5; 
