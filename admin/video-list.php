@@ -84,7 +84,7 @@
         <div class="modal-body">
         <div class="messages"></div>
            <div class="form-group">
-                <label for="uploadFile" class="control-label">Interval Value<span class="required">*</span></label>                
+                <label for="uploadFile" class="control-label">Interval Value<span class="required">*</span><small>(In Seconds.)</small></label>                
                   <input name="video_interval" id="video_interval" type="number" value="<?php echo VIDEO_INTERVAL; ?>" class="form-control input-sm" min="5" required/>
               </div>
         </div>
@@ -94,11 +94,6 @@
                   <img src="<?php echo APP_PATH ?>assets/images/ajax-loader.gif"/>
                 </div>
                   <input type="submit" id="uploadbtn" value="Update Now" class="btn btn-success btn-outline-rounded green">
-                
-             
-                             
-                
-              
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
         </form>

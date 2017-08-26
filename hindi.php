@@ -1,13 +1,13 @@
 <?php include_once('common/header.php'); ?>
 <!-- tab panes -->
 <div class="row">
-<div class="col-md-9">
+<div class="col-md-9 col-xs-12">
 	<div id="video-cntr">
 	</div>
 						
 
 </div>
-<div class="col-md-3">
+<div class="col-md-3 col-xs-12">
 <div id="prod_nav">	
 <h4>PlayList</h4>		
 	<ul class="item list-unstyled">
@@ -27,8 +27,6 @@
 				src: url,
 				type: 'video/mp4',
 				controls: true,
-				width:877,
-				height:600,
 				autoplay: true,
 				class:'video-js vjs-default-skin'
 			});
@@ -53,8 +51,6 @@ $(document).ready(function(){
 		});
 		$('.current_action').first().trigger('click');
     });
-    
-    
 });
 </script> 
 <?php include_once('common/footer.php'); ?>

@@ -4,6 +4,12 @@
  * For each content video, this plugin plays one preroll and one midroll.
  * Ad content is chosen randomly from the URLs listed in inventory.json.
  */
+ var addInterval = 10;
+ $(document).ready(function(){
+	 if($('#interval_value').val())
+		 addInterval = parseInt($('#interval_value').val());
+    
+ });
 (function(window, document, vjs, undefined) {
 "use strict";
 
@@ -33,7 +39,7 @@
       // just like any other video.js plugin, ad integrations can
       // accept initialization options
       adServerUrl = (options && options.adServerUrl) || "assets/uploads/advs/inventory.json",
-      midrollPoint = (options && options.midrollPoint) || 5,
+      midrollPoint = (options && options.midrollPoint) || addInterval,
       playPreroll = options && options.playPreroll !== undefined ? options.playPreroll : true,
       playMidroll = options && options.playMidroll !== undefined ? options.playMidroll : true,
       playPostroll = options && options.playPostroll !== undefined ? options.playPostroll : true,
@@ -103,9 +109,9 @@
 		var currentTime = player.currentTime();
 		//videojs.log("seeking >>><<<<< "+currentTime);
 		var time = parseInt(currentTime);
-		var modVal = parseInt(time % 5);
+		var modVal = parseInt(time % addInterval);
 		var diff = parseInt(time - modVal);
-		midrollPoint = diff + 5
+		midrollPoint = diff + addInterval
 		videojs.log("seeking11 >>><<<<< add : "+midrollPoint+" CT -: "+time);
 		
 	
@@ -114,7 +120,7 @@
 	player.on('ended', function (e) {
     // do something
 	   videojs.log("video finished");
-	   midrollPoint = 5;
+	   midrollPoint = addInterval;
 	});
 
     player.on('contentended', function() {
@@ -149,7 +155,7 @@
 	  if (opportunity && playMidroll) {
         //state.midrollPlayed = true;
         playAd(); 
-        midrollPoint = midrollPoint + 5; 
+        midrollPoint = midrollPoint + addInterval; 
       }
     });		
   });
@@ -241,7 +247,7 @@ function abc(url) {
         if (evt === 'adplay') {
           player.trigger('ads-ad-started');
         }
-
+        
         //li.innerHTML = str;
         //log.insertBefore(li, log.firstChild);
       });

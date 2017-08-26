@@ -44,7 +44,7 @@ function cancelContentPlay(player) {
     var placeholder = _document2['default'].createElement('div');
 
     placeholder.style.width = width + 'px';
-    placeholder.style.height = height + 'px';
+   placeholder.style.height = height + 'px';
     placeholder.style.background = 'black';
     placeholder.style.position = position;
     placeholder.style.top = top;

@@ -1305,3 +1305,16 @@ video::-webkit-media-text-track-display {
     visibility: hidden;
   }
 }
+
+
+.video-js {
+        width: 300px;
+        height: 550px;
+      }
+
+      @media (max-width: 767px) {
+.video-js {
+        width: 300px;
+        height: 300px;
+      }
+}

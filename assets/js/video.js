@@ -1885,10 +1885,10 @@ var Component = function () {
    */
 
 
-  Component.prototype.dimensions = function dimensions(width, height) {
-    // Skip resize listeners on width for optimization
-    return this.width(width, true).height(height);
-  };
+  // Component.prototype.dimensions = function dimensions(width, height) {
+  //   // Skip resize listeners on width for optimization
+  //   return this.width(width, true).height(height);
+  // };
 
   /**
    * Get or set width or height of the `Component` element. This is the shared code
@@ -9448,7 +9448,7 @@ var Player = function (_Component) {
       var defaultsStyleEl = Dom.$('.vjs-styles-defaults');
       var head = Dom.$('head');
 
-      head.insertBefore(this.styleEl_, defaultsStyleEl ? defaultsStyleEl.nextSibling : head.firstChild);
+      //head.insertBefore(this.styleEl_, defaultsStyleEl ? defaultsStyleEl.nextSibling : head.firstChild);
     }
 
     // Pass in the width/height/aspectRatio options which will update the style el
@@ -24093,7 +24093,7 @@ if (_window2['default'].VIDEOJS_NO_DYNAMIC_STYLE !== true && Dom.isReal()) {
     var head = Dom.$('head');
 
     if (head) {
-      head.insertBefore(style, head.firstChild);
+      //head.insertBefore(style, head.firstChild);
     }
     stylesheet.setTextContent(style, '\n      .video-js {\n        width: 300px;\n        height: 150px;\n      }\n\n      .vjs-fluid {\n        padding-top: 56.25%\n      }\n    ');
   }

@@ -4,7 +4,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @session_start();
 @ob_start("ob_gzhandler");
 @date_default_timezone_set('Asia/Calcutta');
-define(APP_FOLDER,"videosapp/");
+define(APP_FOLDER,"videosapp2/");
 //define("ADMIN_MODEL_FILE_PATH",FILE_PATH."admin/model/");
 define("FILE_PATH",$_SERVER['DOCUMENT_ROOT']."/".APP_FOLDER);
 //echo "</br>FILE_PATH~~".FILE_PATH."</br>";
