@@ -39,6 +39,14 @@
       <div class="panel-heading"><h4>Manage Video Playlist</h4><a href="<?php echo ADMIN_FOLDER_PATH ?>" class="btn btn-info btn-sm" role="button">Add More Video</a>
          <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Set Video Interval</button>
+  <?php 
+            $srcPath = SOURCE_FOLDER;
+            $destPath = FILE_PATH;
+            if(is_dir($srcPath))
+            {
+            ?>
+            <a class="btn btn-info btn-sm" href="<?php echo ADMIN_FOLDER_PATH ?>readmediafiles.php">Copy Video From Media</a> &emsp;
+            <?php } ?>
       </div>
       <div class="panel-body">
       <ul class="nav nav-pills" id="myProgramlistTabs">

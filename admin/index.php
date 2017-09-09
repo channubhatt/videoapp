@@ -40,7 +40,16 @@
                     <div class="form-horizontal">
                     
             <form id="uploadfileform" method="post" enctype="multipart/form-data" onsubmit="return submitForm();">
-            <div class="text-right"><a class="btn btn-info btn-sm" href="<?php echo ADMIN_FOLDER_PATH ?>/video-list.php">Manage All Videos</a></div>
+            <div class="text-right">
+            <?php 
+            $srcPath = SOURCE_FOLDER;
+            $destPath = FILE_PATH;
+            if(is_dir($srcPath))
+            {
+            ?>
+            <a class="btn btn-info btn-sm" href="<?php echo ADMIN_FOLDER_PATH ?>readmediafiles.php">Copy Video From Media</a> &emsp;
+            <?php } ?>
+            <a class="btn btn-info btn-sm" href="<?php echo ADMIN_FOLDER_PATH ?>video-list.php">Manage All Videos</a></div>
             <div class="messages"></div>
             
             <div class="form-group">
