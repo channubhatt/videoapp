@@ -36,7 +36,7 @@ if ((($_FILES["file"]["type"] == "video/mp4") && ($_FILES["file"]["size"] < $vid
 		$response['message'] = '<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong>Warning!</strong> &nbsp;'. $filename . ' already exists.</div>';
 	        } 
 	        else {
-
+				//echo $_FILES["file"]["tmp_name"];
 	            move_uploaded_file($_FILES["file"]["tmp_name"], UPLOAD_PATH.$video_folder_location."/" . $filename);
 
 	            if($video_folder_location=="advs")

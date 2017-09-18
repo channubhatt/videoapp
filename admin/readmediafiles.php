@@ -83,7 +83,7 @@ while($readFile = readdir($srcDir))
       {
         echo "<td>";
         ?>
-        <input class="videobutton" id="videobutton_<?php echo $i ?>" type='checkbox' value="<?php echo $i ?>" name="option[]" >
+        <input class="videobutton" id="videobutton_<?php echo $i ?>" type='checkbox' value="<?php echo $readFile ?>" name="option[]" >
         <?php
         echo "</td>";
         echo "<td>";

@@ -16,7 +16,9 @@ while($readFile = readdir($srcDir))
 
 			if($data=="mp4")
 			{
-				$allfiles[]=array('index'=>$i, 'source' =>$srcPath . $readFile, 'filename' => $readFile);
+				$allfiles[]=array('index'=>$i, 'files'=>$readFile, 'source' =>$srcPath . $readFile, 'filename' => $readFile);
+				
+				//print_r($allfiles);
 				// if(copy($srcPath . $readFile, $destPath . $readFile))
 	   //          {
 	   //              echo "Copy file";
@@ -42,9 +44,9 @@ for($i=0;$i<count($requestfiles);$i++)
 }
 
 get_folder_name_by_value($request, $allfiles);
-// echo "<pre>";
+//echo "<pre>";
 //print_r($allfiles);
-// print_r($requestfiles);
+//print_r($request);
 
 //header('Content-type: application/json');
 //echo json_encode($posts);
@@ -59,8 +61,17 @@ function get_folder_name_by_value($request, $allfiles){
 	switch ($videoLang) {
 		case '1'://echo "Hindi";
 			for($i=0;$i<count($allfiles);$i++){
-				if (in_array($allfiles[$i]['index'], $request))
+				/*print_r($request);
+				print_r($allfiles[$i]['index']);
+				exit;*/
+				if (in_array($allfiles[$i]['files'], $request))
 				{
+					/*
+					echo "source~~~~".$allfiles[$i]['source'];
+					echo "<br>";
+					echo "destination~~~~".UPLOAD_PATH."hindi/".$allfiles[$i]['filename'];
+					echo "<br>";
+					*/
 					if(copy($allfiles[$i]['source'], UPLOAD_PATH."hindi/".$allfiles[$i]['filename']))
 					{
 					echo "<p>File copied Successfully. ".$allfiles[$i]['filename']."</p>";

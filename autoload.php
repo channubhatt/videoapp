@@ -32,7 +32,7 @@ define("UPLOAD_PATH",$upload_floder_path);
 //echo "PATH~~".UPLOAD_PATH;
 //define("SITE",$path."asset/");
 define("IMG_PATH",$path."admin/images/");
-define("SOURCE_FOLDER","I:/");
+define("SOURCE_FOLDER","/media/videoApp/");
 //include_once(FILE_PATH.'common/function.php');
 
 ?>
