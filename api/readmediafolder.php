@@ -169,8 +169,6 @@ function get_folder_name_by_value($request, $allfiles){
 				for($i=0;$i<count($allfiles);$i++){
 				if (in_array($allfiles[$i]['files'], $request))
 				{
-
-					
 					// echo "source~~~~".$allfiles[$i]['source'];
 					// echo "<br>";
 					// echo "destination~~~~".UPLOAD_PATH."hindi/".$allfiles[$i]['filename'];
