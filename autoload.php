@@ -4,7 +4,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @session_start();
 @ob_start("ob_gzhandler");
 @date_default_timezone_set('Asia/Calcutta');
-define(APP_FOLDER,"videosapp2/");
+define(APP_FOLDER,"videoapp/");
 //define("ADMIN_MODEL_FILE_PATH",FILE_PATH."admin/model/");
 define("FILE_PATH",$_SERVER['DOCUMENT_ROOT']."/".APP_FOLDER);
 //echo "</br>FILE_PATH~~".FILE_PATH."</br>";
@@ -32,7 +32,7 @@ define("UPLOAD_PATH",$upload_floder_path);
 //echo "PATH~~".UPLOAD_PATH;
 //define("SITE",$path."asset/");
 define("IMG_PATH",$path."admin/images/");
-define("SOURCE_FOLDER","/media/videoApp/");
+define("SOURCE_FOLDER","/opt/lampp/htdocs/media/");
 //include_once(FILE_PATH.'common/function.php');
 
 ?>

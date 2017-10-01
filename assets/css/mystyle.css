@@ -101,3 +101,7 @@ div#preloader { position: fixed; left: 0; top: 0; z-index: 999; width: 100%; hei
     color: green;
     margin-bottom: 5px;
    }
+
+   img.loader_while_upload{
+   	margin-top: -75px;
+   }

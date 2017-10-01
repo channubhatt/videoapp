@@ -44,6 +44,7 @@
             <?php 
             $srcPath = SOURCE_FOLDER;
             $destPath = FILE_PATH;
+            //echo $srcPath;
             if(is_dir($srcPath))
             {
             ?>

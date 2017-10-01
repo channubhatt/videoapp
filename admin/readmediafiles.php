@@ -45,6 +45,7 @@
         <input type="button" class="btn btn-warning btn-sm" name="btn_hindi" id="btn_hindi" value="Copy to Kannada Folder" onclick="movefilesfolder(3);">
         <input type="button" class="btn btn-success btn-sm" name="btn_hindi" id="btn_hindi" value="Copy to Malayalam Folder" onclick="movefilesfolder(4);">
         <input type="button" class="btn btn-info btn-sm" name="btn_hindi" id="btn_hindi" value="Copy to Telugu Folder" onclick="movefilesfolder(5);">
+        <input type="button" class="btn btn-info btn-sm" name="btn_hindi" id="btn_hindi" value="Copy to Advertisement Folder" onclick="movefilesfolder(6);">
 <div class="row">&nbsp;</div>
 
 
@@ -117,6 +118,10 @@ else{
      <div class="panel panel-default">
   <div class="panel-heading"><i class="fa fa-exchange" aria-hidden="true"></i> File Transfer History</div>
   <div class="panel-body">
+    <div class="text-center" id="ajax_loader_wait" style="display: none;">
+    <p>Uploading File. Please Wait ....</p>
+    <img src="<?php echo APP_PATH ?>assets/images/ajax_loader.gif" class="loader_while_upload">
+  </div>
     <div class="history_log">
     <div id="log"></div>
     </div>
@@ -142,6 +147,7 @@ else{
       allVals.push($(this).val());
    });
    var checkboxvalue=allVals.toString();
+   $('#ajax_loader_wait').css('display','block');
    var request = $.ajax({
   url: "../api/readmediafolder.php",
   type: "POST",
@@ -149,6 +155,7 @@ else{
 });
 
 request.done(function(msg) {
+   $('#ajax_loader_wait').css('display','none');
   $("#log").append( msg );
 });
 
